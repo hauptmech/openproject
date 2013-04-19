@@ -783,6 +783,7 @@ en:
   label_add_related_issues: Add related issue
   label_applied_status: Applied status
   label_loading: Loading...
+  label_searching: Searching...
   label_relation_new: New relation
   label_relation_delete: Delete relation
   label_relates_to: related to
@@ -896,6 +897,7 @@ en:
   label_project_copy_notifications: Send email notifications during the project copy
   label_principal_search: "Search for user or group:"
   label_user_search: "Search for user:"
+  label_role_search: "Search for role:"
   label_git_path: Path to .git directory
   label_filesystem_path: Root directory
   label_additional_workflow_transitions_for_assignee: Additional transitions allowed when the user is the assignee
@@ -1035,6 +1037,9 @@ en:
   text_default_encoding: "Default: UTF-8"
   text_git_repo_example: "a bare and local repository (e.g. /gitrepo, c:\\gitrepo)"
   text_analyze: "Further analyze: %{subject}"
+  text_no_matches_found: "No matches found."
+  text_more_input_needed: "Please enter %{number} more character(s)"
+  text_selection_too_big: "You can only select %{limit} items"
 
   default_role_manager: Manager
   default_role_developer: Developer
