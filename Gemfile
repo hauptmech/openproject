@@ -13,6 +13,7 @@ gem "delayed_job_active_record" # that's how delayed job's readme recommends it
 
 # TODO: adds #auto_link which was deprecated in rails 3.1
 gem 'rails_autolink'
+gem "will_paginate"
 
 gem 'awesome_nested_set'
 
