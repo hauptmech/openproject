@@ -440,39 +440,6 @@ var WarnLeavingUnsaved = Class.create({
 	}
 });
 
-/*
- * 1 - registers a callback which copies the csrf token into the
- * X-CSRF-Token header with each ajax request.  Necessary to
- * work with rails applications which have fixed
- * CVE-2011-0447
- * 2 - shows and hides ajax indicator
- */
-Ajax.Responders.register({
-    onCreate: function(request){
-        var csrf_meta_tag = $$('meta[name=csrf-token]')[0];
-
-        if (csrf_meta_tag) {
-            var header = 'X-CSRF-Token',
-                token = csrf_meta_tag.readAttribute('content');
-
-            if (!request.options.requestHeaders) {
-              request.options.requestHeaders = {};
-            }
-            request.options.requestHeaders[header] = token;
-          }
-
-        if ($('ajax-indicator') && Ajax.activeRequestCount > 0) {
-            Element.show('ajax-indicator');
-        }
-    },
-    onComplete: function(){
-        if ($('ajax-indicator') && Ajax.activeRequestCount == 0) {
-            Element.hide('ajax-indicator');
-        }
-        addClickEventToAllErrorMessages();
-    }
-});
-
 function hideOnLoad() {
   $$('.hol').each(function(el) {
   	el.hide();
@@ -536,8 +503,14 @@ jQuery.viewportHeight = function() {
 /* TODO: integrate with existing code and/or refactor */
 jQuery(document).ready(function($) {
 
-  /* TODO: This duplicates the ajax indicator code for Prototype.
-     Switch to one implementation that does it all */
+
+  /*
+  * 1 - registers a callback which copies the csrf token into the
+  * X-CSRF-Token header with each ajax request.  Necessary to
+  * work with rails applications which have fixed
+  * CVE-2011-0447
+  * 2 - shows and hides ajax indicator
+  */
   $(document).ajaxSend(function (event, request) {
     var csrf_meta_tag = $('meta[name=csrf-token]');
 
